@@ -2,10 +2,10 @@
 # based on aur electron8-bin: Tom Vincent <http://tlvince.com/contact/>
 
 _projectname=electron
-_major=25
+_major=26
 _pkgname="${_projectname}${_major}"
 pkgname="${_pkgname}"-bin
-_pkgver="${_major}.5.0"
+_pkgver="${_major}.1.0"
 pkgver="${_pkgver/-/.}"
 pkgrel=1
 pkgdesc="Build cross platform desktop apps with web technologies - binary version ${_major}"
@@ -27,8 +27,8 @@ source_x86_64=(
 	"${pkgname}-${pkgver}-x86_64.zip::${_releaseurl}/${_projectname}-v${_pkgver}-linux-x64.zip"
 )
 
-sha256sums_x86_64=('32df335c0e92f785adf8f79b635d75d4e430e1fb0b0396e02c40839d22a8d2ce'
-                   '485cbeb206fccfb4ed42f694100eebb80c9db6639b3537a95823c4fcb7f210cd')
+sha256sums_x86_64=('58fc3182046949e8a1e8db735d7467c41bc5b0e9071bb3ad32efec84000a582f'
+                   'de78aed71ce17395675a29dcd20c1370473713eb234143dd0fa3e4c5a39504eb')
 
 package() {
 	install -dm755 "${pkgdir}/usr/lib/${_pkgname}/"
