@@ -5,7 +5,7 @@ _projectname=electron
 _major=28
 _pkgname="${_projectname}${_major}"
 pkgname="${_pkgname}"-bin
-_pkgver="${_major}.0.0"
+_pkgver="${_major}.1.4"
 pkgver="${_pkgver/-/.}"
 pkgrel=1
 pkgdesc="Build cross platform desktop apps with web technologies - binary version ${_major}"
@@ -15,26 +15,26 @@ license=('MIT')
 provides=("${_pkgname}=${pkgver}" "${_projectname}=${pkgver}")
 conflicts=("${_pkgname}")
 depends=(c-ares
-         alsa-lib
-         gtk3
-         libevent
-         libffi
-         nss)
+	alsa-lib
+	gtk3
+	libevent
+	libffi
+	nss)
 optdepends=('wayland'
-            'pipewire: WebRTC desktop sharing under Wayland'
-            'kde-cli-tools: file deletion support (kioclient5)'
-            'libappindicator-gtk3: StatusNotifierItem support'
-            'qt5-base: enable Qt5 with --enable-features=AllowQt'
-            'trash-cli: file deletion support (trash-put)'
-            'xdg-utils: open URLs with desktop’s default (xdg-email, xdg-open)')
+	'pipewire: WebRTC desktop sharing under Wayland'
+	'kde-cli-tools: file deletion support (kioclient5)'
+	'libappindicator-gtk3: StatusNotifierItem support'
+	'qt5-base: enable Qt5 with --enable-features=AllowQt'
+	'trash-cli: file deletion support (trash-put)'
+	'xdg-utils: open URLs with desktop’s default (xdg-email, xdg-open)')
 _releaseurl="https://github.com/${_projectname}/${_projectname}/releases/download/v${_pkgver}"
 source_x86_64=(
-    "${pkgname}-chromedriver-${pkgver}-x86_64.zip::${_releaseurl}/chromedriver-v${_pkgver}-linux-x64.zip"
-    "${pkgname}-${pkgver}-x86_64.zip::${_releaseurl}/${_projectname}-v${_pkgver}-linux-x64.zip"
+	"${pkgname}-chromedriver-${pkgver}-x86_64.zip::${_releaseurl}/chromedriver-v${_pkgver}-linux-x64.zip"
+	"${pkgname}-${pkgver}-x86_64.zip::${_releaseurl}/${_projectname}-v${_pkgver}-linux-x64.zip"
 )
 
-sha256sums_x86_64=('89ea6f12cc91f601f6c24ea84ba184e79e58e1c81cb0ae58885119c5c5214aca'
-                    'd66b6774b886bd57519d49b9eb8e6e745b523519414a8819f67aa19f76e2b53c')
+sha256sums_x86_64=('005150f17b87ca3ee3723072b74914f0d10bbd45ad144d18356e787beec16740'
+	'41be35d9dd318409b6a829ca0d83263014255d24c4e1018c9dc164e5c58aa384')
 
 package() {
 	install -dm755 "${pkgdir}/usr/lib/${_pkgname}/"
