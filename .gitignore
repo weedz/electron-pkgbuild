@@ -3,3 +3,5 @@ src/
 *.log
 pkg/
 *.pkg.*
+/SHASUMS256.txt
+
