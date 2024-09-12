@@ -4,7 +4,7 @@ _projectname=electron
 _major=31
 _pkgname="${_projectname}${_major}"
 pkgname="${_pkgname}"-bin
-_pkgver="${_major}.5.0"
+_pkgver="${_major}.6.0"
 pkgver="${_pkgver/-/.}"
 pkgrel=1
 pkgdesc="Build cross platform desktop apps with web technologies - binary version ${_major}"
@@ -32,8 +32,8 @@ source_x86_64=(
     "${pkgname}-${pkgver}-x86_64.zip::${_releaseurl}/${_projectname}-v${_pkgver}-linux-x64.zip"
 )
 
-sha256sums_x86_64=('e6bf2427560b19e0aaaad60e75d7eb29d8d74965ee94c26540c4c161ebcf5a7c'
-    '258548da58792998734cd9aab709b677202b3b5dab7050627b0a8c57d810bfe5')
+sha256sums_x86_64=('65b04f0d8980c17d205644903718a4b41ba6c1fab9d25a58dadf00b6db24a402'
+    '86b3794aba055e84f23cba5d8319ca9f23a05385d2c06fe7d78d24d2bb356b67')
 
 package() {
     install -dm755 "${pkgdir}/usr/lib/${_pkgname}/"
