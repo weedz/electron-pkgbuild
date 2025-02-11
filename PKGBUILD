@@ -1,16 +1,16 @@
 # based on aur electron8-bin: Tom Vincent <http://tlvince.com/contact/>
 
 _projectname=electron
-_major=32
+_major=34
 _pkgname="${_projectname}${_major}"
 pkgname="${_pkgname}"-bin
-_pkgver="${_major}.3.0"
+_pkgver="${_major}.1.1"
 pkgver="${_pkgver/-/.}"
 pkgrel=1
 pkgdesc="Build cross platform desktop apps with web technologies - binary version ${_major}"
-arch=('x86_64' 'aarch64')
+arch=('x86_64')
 url=https://electronjs.org/
-license=('MIT')
+license=('MIT' 'LicenseRef-custom')
 provides=("${_pkgname}=${pkgver}" "${_projectname}=${pkgver}")
 conflicts=("${_pkgname}")
 depends=(c-ares
@@ -32,23 +32,20 @@ source_x86_64=(
   "${pkgname}-${pkgver}-x86_64.zip::${_releaseurl}/${_projectname}-v${_pkgver}-linux-x64.zip"
 )
 
-sha256sums_x86_64=('af9e3a6aac492827e1ace64fc50744f82523f09842b2414ad00d9a97f06d7a85'
-  '8fb72c1d19a51552438eb42fdaae915643c2e310fa3090d8d5293ad6fc94b8c5')
+sha256sums_x86_64=('62734cb681a6da3c73b20504f49c7759c9dbb1c923e250d67c11888426e3cad0'
+  '9fbca20baea84800f7f50a9b245302dddbfab3425dd762c482d79e867a5a6dbe')
 
 package() {
   install -dm755 "${pkgdir}/usr/lib/${_pkgname}/"
+  install -dm755 "${pkgdir}/usr/bin"
+
   find . -mindepth 1 -maxdepth 1 -type f ! -name "*.zip" ! -name "LICENSE*" -exec cp -r --no-preserve=ownership --preserve=mode -t "${pkgdir}/usr/lib/${_pkgname}/." {} +
 
-  for _folder in 'locales' 'resources'; do
-    cp -r --no-preserve=ownership --preserve=mode "${_folder}/" "${pkgdir}/usr/lib/${_pkgname}/${_folder}/"
-  done
+  cp -r --no-preserve=ownership --preserve=mode "${srcdir}"/{locales,resources} "${pkgdir}/usr/lib/${_pkgname}"
 
   chmod u+s "${pkgdir}/usr/lib/${_pkgname}/chrome-sandbox"
 
-  install -dm755 "${pkgdir}/usr/bin"
   ln -nfs "/usr/lib/${_pkgname}/${_projectname}" "${pkgdir}/usr/bin/${_pkgname}"
 
-  for _license in 'LICENSE' 'LICENSES.chromium.html'; do
-    install -Dm644 "${_license}" "${pkgdir}/usr/share/licenses/${pkgname}/${_license}"
-  done
+  install -Dm644 "${srcdir}/LICENSE"* -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
