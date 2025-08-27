@@ -1,8 +1,8 @@
 # based on aur electron8-bin: Tom Vincent <http://tlvince.com/contact/>
 
 _projectname=electron
-_major=36
-_minor=7.4
+_major=37
+_minor=4.0
 _pkgname="${_projectname}${_major}"
 pkgname="${_pkgname}"-bin
 _pkgver="${_major}.${_minor}"
@@ -33,8 +33,8 @@ source_x86_64=(
   "${pkgname}-${pkgver}-x86_64.zip::${_releaseurl}/${_projectname}-v${_pkgver}-linux-x64.zip"
 )
 
-sha256sums_x86_64=('a3bfc851121882a56661df1f1398e5ef975adb9e088153c4b3b8e177dab903c1'
-  'e8f33146916a8376603622d13d2322defe383678034eb8a60b44a13e42c61ce6')
+sha256sums_x86_64=('8fc352ffa0bfcc7f977dce3ec066a4a77198c584292ff066b611b6259367bcf4'
+  '83230e0fb8506da154e946579835cf468f05ec3f7ae0fb09a420c54ec129d7ce')
 
 package() {
   install -dm755 "${pkgdir}/usr/lib/${_pkgname}/"
